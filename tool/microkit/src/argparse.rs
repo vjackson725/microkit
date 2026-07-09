@@ -75,6 +75,7 @@ pub struct Args {
     pub search_paths: Vec<PathBuf>,
     pub requested_image_type: RequestedImageType,
     pub override_kernel: Option<PathBuf>,
+    pub dot_path : Option<PathBuf>,
 }
 
 #[derive(Debug)]
@@ -168,6 +169,7 @@ impl Args {
 
         let mut output_path = PathBuf::from("loader.img");
         let mut report_path = PathBuf::from("report.txt");
+        let mut dot_path = None;
         let mut capdl_json_path = None;
         let mut viper_output_dir = None;
         let mut search_paths = Vec::new();
@@ -226,6 +228,9 @@ impl Args {
                     override_kernel =
                         Some(consume_parameter(&mut args, "--override-kernel")?.into());
                 }
+                "--dot-path" => {
+                    dot_path = Some(consume_parameter(&mut args, "--dot-path")?.into());
+                }
                 value => {
                     if sdf_path.is_none() {
                         sdf_path = Some(value.into());
@@ -273,6 +278,7 @@ impl Args {
             search_paths,
             requested_image_type,
             override_kernel,
+            dot_path,
         })
     }
 }

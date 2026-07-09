@@ -241,7 +241,7 @@ pub struct SysSetVar {
     pub kind: SysSetVarKind,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ChannelEnd {
     pub pd: usize,
     pub id: u64,
@@ -250,7 +250,7 @@ pub struct ChannelEnd {
     pub setvar_id: Option<String>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Channel {
     pub end_a: ChannelEnd,
     pub end_b: ChannelEnd,

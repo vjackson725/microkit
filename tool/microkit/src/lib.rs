@@ -14,6 +14,7 @@ use crate::{
 pub mod argparse;
 pub mod capdl;
 pub mod crc32;
+pub mod dot;
 pub mod elf;
 pub mod loader;
 pub mod report;
